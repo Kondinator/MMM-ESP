@@ -1,0 +1,16 @@
+//helloworld.js:
+
+Module.register("MMM-ESP", {
+  // Default module config.
+  defaults: {
+    text: "this should be data" + data,
+  },
+
+  var response, xmlhttp;
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "http://10.10.10.166", false);
+  xhttp.send()
+  var Celsius = xhttp.responseText;
+  document.getElementById("test").innerHTML = "bruh shit works " + Celsius;
+};
+  
