@@ -3,7 +3,7 @@
 Module.register("MMM-ESP",{
 	// Default module config.
 	defaults: {
-		text: "hello world",
+		text: "hello world" + data,
 	},
 
 	// Override dom generator.
