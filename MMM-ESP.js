@@ -22,7 +22,7 @@ Module.register("MMM-ESP", {
   getDom: function() {
     var element = document.createElement("div")
   element.className = "myContent"
-  element.innerHTML = celsius + this.config.starttext
+  element.innerHTML = this.celsius + this.config.starttext
   return element
 
   },
