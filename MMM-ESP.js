@@ -5,35 +5,65 @@ Module.register("MMM-ESP", {
     firsttext: "there should be some data around here",
   },
 
+  getScripts: function() {
+      return [
+          'https://canvasjs.com/assets/script/canvasjs.min.js'
+      
+      ]
+  },
+  
+
   start: function () {
-    var timer = setInterval(() => {
-      this.updateDom()
-    }, 60000)
   },
 
   getDom: function () {
 
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "http://10.10.10.166", false);
-    xhttp.send()
+      var celsius = ["0","0","0","0","0","0"]
+          
+      
 
-    var celsius5 = celsius4;
-    var celsius4 = celsius3;
-    var celsius3 = celsius2;
-    var celsius2 = celsius1;
-    var celsius1 = xhttp.responseText;
-  
-    var element = document.createElement("div")
-    element.className = "myContent"
-    element.innerHTML = this.config.firsttext + " " + celsius1 + " " + this.config.lasttext
-    return element
+      function myloop () {
+          celsius.shift()
 
-  },
-  notificationReceived: function () {
 
-  },
-  socketNotificationReceived: function () {
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("GET", "http://10.10.10.166", false);
+      xhttp.send()
 
-  },
+      celsius.push(xhttp.responseText)
+      console.log(celsius)
+
+      setTimeout(getDom, 10000)
+      
+
+      var chart = new CanvasJS.Chart("chartContainer", {
+
+
+          animationEnabled: falses,
+          theme: "light2",
+          title: {
+              text: "Simple Line Chart"
+          },
+          axisY: {
+              includeZero: true
+          },
+          data: [{
+              type: "line",
+              dataPoints: [
+
+                  { y: Number(celsius[0]) },
+                  { y: Number(celsius[1]) },
+                  { y: Number(celsius[2]) },
+                  { y: Number(celsius[3]) },
+                  { y: Number(celsius[4]) },
+                  { y: Number(celsius[5]) },
+              ]
+          }]
+      });
+      chart.render();
+  }
+      myloop()
+
+  }
 
 });
