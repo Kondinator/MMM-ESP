@@ -5,6 +5,8 @@ Module.register("MMM-ESP", {
     firsttext: "there should be some data around here",
   },
 
+  src="https://canvasjs.com/assets/script/canvasjs.min.js",
+  
   getScripts: function () {
     return [
       'https://canvasjs.com/assets/script/canvasjs.min.js'
@@ -60,5 +62,6 @@ Module.register("MMM-ESP", {
     }
     myloop()
 
+    src="https://canvasjs.com/assets/script/canvasjs.min.js"
   }
 });
