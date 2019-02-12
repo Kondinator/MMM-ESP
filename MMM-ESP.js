@@ -13,23 +13,24 @@ Module.register("MMM-ESP", {
   start: function () {
 
   },
-  getDom: function() {
+  getDom: function () {
+    celsius = 69;
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "http://10.10.10.166", true);
     xhttp.send()
-    var celsius = 69;
+    
     //var celsius = xhttp.responseText;
 
     var element = document.createElement("div")
-  element.className = "myContent"
-  element.innerHTML = this.celsius + " " + this.config.starttext
-  return element
+    element.className = "myContent"
+    element.innerHTML(this.celsius + " " + this.config.starttext)
+    return element
 
   },
-  notificationReceived: function() {
+  notificationReceived: function () {
 
   },
-  socketNotificationReceived: function() {
+  socketNotificationReceived: function () {
 
   },
 
