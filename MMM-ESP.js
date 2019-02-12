@@ -1,14 +1,9 @@
-//helloworld.js:
-
-
-
+//MMM-ESP.js:
 Module.register("MMM-ESP", {
   // Default module config.
   defaults: {
     firsttext: "there should be some data around here",
   },
-
-
 
   start: function () {
     var timer = setInterval(() => {
@@ -34,6 +29,5 @@ Module.register("MMM-ESP", {
   socketNotificationReceived: function () {
 
   },
-
 
 });
