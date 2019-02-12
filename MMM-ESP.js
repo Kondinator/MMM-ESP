@@ -22,7 +22,7 @@ Module.register("MMM-ESP", {
           
       
 
-      function myloop () {
+      function getDom () {
           celsius.shift()
 
 
