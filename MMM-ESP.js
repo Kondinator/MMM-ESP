@@ -5,15 +5,20 @@
 Module.register("MMM-ESP", {
   // Default module config.
   defaults: {
-    starttext: "there should be some data around here"
+    starttext: "there should be some data around here",
+    updateInterval: 1000 * 60 
   },
 
 
 
-  start: function () {
-
+  start: function () {		
+		var timer = setInterval(()=>{
+			self.updateDom()
+		}, this.config.updateInterval)
   },
+
   getDom: function () {
+
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "http://10.10.10.166", false);
     xhttp.send()
