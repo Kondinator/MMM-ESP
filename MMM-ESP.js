@@ -5,27 +5,24 @@ Module.register("MMM-ESP", {
     firsttext: "there should be some data around here",
   },
 
-  getScripts: function() {
-      return [
-          'https://canvasjs.com/assets/script/canvasjs.min.js'
-      
-      ]
+  getScripts: function () {
+    return [
+      'https://canvasjs.com/assets/script/canvasjs.min.js'
+
+    ]
   },
-  
+
 
   start: function () {
   },
 
   getDom: function () {
 
-      var celsius = ["0","0","0","0","0","0"]
-          
-      
-      function myloop () {
+    var celsius = ["0", "0", "0", "0", "0", "0"]
 
-      function getDom () {
-          celsius.shift()
+    function myloop() {
 
+      celsius.shift()
 
       var xhttp = new XMLHttpRequest();
       xhttp.open("GET", "http://10.10.10.166", false);
@@ -35,37 +32,33 @@ Module.register("MMM-ESP", {
       console.log(celsius)
 
       setTimeout(myloop, 10000)
-      
 
       var chart = new CanvasJS.Chart("chartContainer", {
 
+        animationEnabled: falses,
+        theme: "light2",
+        title: {
+          text: "Simple Line Chart"
+        },
+        axisY: {
+          includeZero: true
+        },
+        data: [{
+          type: "line",
+          dataPoints: [
 
-          animationEnabled: falses,
-          theme: "light2",
-          title: {
-              text: "Simple Line Chart"
-          },
-          axisY: {
-              includeZero: true
-          },
-          data: [{
-              type: "line",
-              dataPoints: [
-
-                  { y: Number(celsius[0]) },
-                  { y: Number(celsius[1]) },
-                  { y: Number(celsius[2]) },
-                  { y: Number(celsius[3]) },
-                  { y: Number(celsius[4]) },
-                  { y: Number(celsius[5]) },
-              ]
-          }]
+            { y: Number(celsius[0]) },
+            { y: Number(celsius[1]) },
+            { y: Number(celsius[2]) },
+            { y: Number(celsius[3]) },
+            { y: Number(celsius[4]) },
+            { y: Number(celsius[5]) },
+          ]
+        }]
       });
       chart.render();
-  }
-      myloop()
+    }
+    myloop()
 
   }
-}
-
 });
