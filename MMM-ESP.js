@@ -21,6 +21,7 @@ Module.register("MMM-ESP", {
       var celsius = ["0","0","0","0","0","0"]
           
       
+      function myloop () {
 
       function getDom () {
           celsius.shift()
@@ -33,7 +34,7 @@ Module.register("MMM-ESP", {
       celsius.push(xhttp.responseText)
       console.log(celsius)
 
-      setTimeout(getDom, 10000)
+      setTimeout(myloop, 10000)
       
 
       var chart = new CanvasJS.Chart("chartContainer", {
@@ -62,8 +63,9 @@ Module.register("MMM-ESP", {
       });
       chart.render();
   }
-      getDom()
+      myloop()
 
   }
+}
 
 });
