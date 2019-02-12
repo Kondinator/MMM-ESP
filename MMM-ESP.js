@@ -28,7 +28,7 @@ Module.register("MMM-ESP", {
 
       var chart = new CanvasJS.Chart("chartContainer", {
 
-        animationEnabled: falses,
+        animationEnabled: false,
         theme: "light2",
         title: {
           text: "Simple Line Chart"
