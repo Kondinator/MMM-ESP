@@ -5,15 +5,9 @@ Module.register("MMM-ESP", {
     firsttext: "there should be some data around here",
   },
 
-
-
-
-  start: function () {
-
-    var fileref=document.createElement('script');
-    fileref.setAttribute("type","text/javascript");
-    fileref.setAttribute("src", "https://canvasjs.com/assets/script/canvasjs.min.js");
-  },
+  getScripts: function() {
+		return ["https://canvasjs.com/assets/script/canvasjs.min.js"];
+	},
 
   getDom: function () {
 
