@@ -6,15 +6,17 @@ Module.register("MMM-ESP", {
   // Default module config.
   defaults: {
     starttext: "there should be some data around here",
-    updateInterval: 1000 * 10
+    updateInterval: 1000
   },
 
 
 
-  start: function () {		
-		var timer = setInterval(()=>{
-			this.updateDom()
-		}, this.config.updateInterval)
+  start: function () {
+    this.count = 0
+    var timer = setInterval(() => {
+      this.updateDom()
+      this.count++
+    }, 1000)
   },
 
   getDom: function () {
@@ -26,6 +28,10 @@ Module.register("MMM-ESP", {
     var element = document.createElement("div")
     element.className = "myContent"
     element.innerHTML = celsius + " " + this.config.starttext
+    var subElement = document.createElement("p")
+    subElement.innerHTML = "Count:" + this.count
+    subElement.id = "COUNT"
+    element.appendChild(subElement)
     return element
 
   },
