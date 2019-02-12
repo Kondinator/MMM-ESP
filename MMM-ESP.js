@@ -62,7 +62,7 @@ Module.register("MMM-ESP", {
       });
       chart.render();
   }
-      myloop()
+      getDom()
 
   }
 
