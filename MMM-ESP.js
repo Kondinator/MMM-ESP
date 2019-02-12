@@ -6,7 +6,7 @@ Module.register("MMM-ESP", {
   // Default module config.
   defaults: {
     starttext: "there should be some data around here",
-    updateInterval: 1000 * 60 
+    updateInterval: 1000 * 10
   },
 
 
