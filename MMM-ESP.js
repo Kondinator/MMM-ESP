@@ -16,7 +16,7 @@ Module.register("MMM-ESP", {
     var timer = setInterval(() => {
       this.updateDom()
       this.count++
-    }, 1000)
+    }, 30000)
   },
 
   getDom: function () {
