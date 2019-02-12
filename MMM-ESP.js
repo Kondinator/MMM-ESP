@@ -13,7 +13,7 @@ Module.register("MMM-ESP", {
 
   start: function () {		
 		var timer = setInterval(()=>{
-			self.updateDom()
+			this.updateDom()
 		}, this.config.updateInterval)
   },
 
