@@ -15,7 +15,7 @@ Module.register("MMM-ESP", {
   },
   getDom: function() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "http://10.10.10.166", false);
+    xhttp.open("GET", "http://10.10.10.166", true);
     xhttp.send()
     var celsius = xhttp.responseText;
 
