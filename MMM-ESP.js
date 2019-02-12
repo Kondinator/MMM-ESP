@@ -1,6 +1,6 @@
 //helloworld.js:
 
-var celsius;
+var celsius = 69;
 
 Module.register("MMM-ESP", {
   // Default module config.
@@ -11,15 +11,14 @@ Module.register("MMM-ESP", {
 
 
   start: function () {
+
+  },
+  getDom: function() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "http://10.10.10.166", false);
     xhttp.send()
     var celsius = xhttp.responseText;
-    //document.getElementById("test").innerHTML = "bruh shit works " + celsius;
-  
 
-  },
-  getDom: function() {
     var element = document.createElement("div")
   element.className = "myContent"
   element.innerHTML = this.celsius + this.config.starttext
