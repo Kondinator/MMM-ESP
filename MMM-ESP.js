@@ -23,7 +23,7 @@ Module.register("MMM-ESP", {
 
     var element = document.createElement("div")
     element.className = "myContent"
-    element.innerHTML(this.celsius + " " + this.config.starttext)
+    element.innerHTML= this.celsius + " " + this.config.starttext
     return element
 
   },
