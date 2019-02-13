@@ -16,7 +16,7 @@ Module.register("MMM-ESP", {
 
     var wrapper = document.createElement("div");
 		wrapper.innerHTML = this.config.text;
-    return wrapper;
+    
     
     var div = document.createElement('div');
     div.style.height = '300px';
@@ -69,6 +69,7 @@ Module.register("MMM-ESP", {
       chart.render();
     }
     myloop()
+    return wrapper;
 
 
 
