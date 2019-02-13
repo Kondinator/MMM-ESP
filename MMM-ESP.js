@@ -14,6 +14,10 @@ Module.register("MMM-ESP", {
 
   getDom: function () {
 
+    var wrapper = document.createElement("div");
+		wrapper.innerHTML = this.config.text;
+    return wrapper;
+    
     var div = document.createElement('div');
     div.style.height = '300px';
     div.style.width = '100%';
@@ -39,6 +43,7 @@ Module.register("MMM-ESP", {
       var chart = new CanvasJS.Chart("chart-Container", {
 
         toolTip:{
+        show: false,
         animationEnabled: false,
         theme: "light2",
         },
