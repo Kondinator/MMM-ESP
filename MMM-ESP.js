@@ -13,10 +13,10 @@ Module.register("MMM-ESP", {
 },
 
   getDom: function () {
-/*
+
     var element = document.createElement("div")
-        element.setAttribute("id", "chartContainer")    
-*/
+        element.setAttribute("id", "chart-Container")    
+
     var celsius = ["0", "0", "0", "0", "0", "0"]
 
     function myloop() {
