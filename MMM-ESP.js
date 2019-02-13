@@ -5,12 +5,19 @@ Module.register("MMM-ESP", {
     firsttext: "there should be some data around here",
   },
 
-  getScripts: function() {
-		return ["https://canvasjs.com/assets/script/canvasjs.min.js"];
-	},
+  getScripts: function () {
+    return [
+        'canvasjs.min.js'
+
+    ]
+},
 
   getDom: function () {
 
+    var element = document.createElement("div")
+        element.setAttribute("id", "chartContainer")
+        document.getElementById("chartContainer").style.height="300px";
+        document.getElementById("chartContainer").style.width="100%";
     
 
     var celsius = ["0", "0", "0", "0", "0", "0"]
@@ -54,10 +61,7 @@ Module.register("MMM-ESP", {
       chart.render();
     }
     myloop()
-    var element = document.createElement("div")
-        element.setAttribute("id", "chartContainer")
-        document.getElementById("chartContainer").style.height="300px";
-        document.getElementById("chartContainer").style.width="100%";
+    
     
 
   }
