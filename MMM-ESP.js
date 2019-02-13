@@ -7,15 +7,16 @@ Module.register("MMM-ESP", {
 
   getScripts: function () {
     return [
-        'canvasjs.min.js'
+      'canvasjs.min.js'
 
     ]
-},
+  },
 
   getDom: function () {
 
     var element = document.createElement("div")
-        element.setAttribute("id", "chart-Container")    
+    element.setAttribute("id", "chart-Container")
+    document.getElementById(chart-Container).style.height = '300px';
 
     var celsius = ["0", "0", "0", "0", "0", "0"]
 
@@ -30,7 +31,7 @@ Module.register("MMM-ESP", {
       celsius.push(xhttp.responseText)
       console.log(celsius)
 
-      setTimeout(myloop, 10000)
+      setTimeout(myloop, 20000)
 
       var chart = new CanvasJS.Chart("chart-Container", {
 
@@ -58,8 +59,8 @@ Module.register("MMM-ESP", {
       chart.render();
     }
     myloop()
-    
-    
+
+
 
   }
 });
