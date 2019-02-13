@@ -38,8 +38,10 @@ Module.register("MMM-ESP", {
 
       var chart = new CanvasJS.Chart("chart-Container", {
 
+        toolTip:{
         animationEnabled: false,
         theme: "light2",
+        },
         title: {
           text: "Simple Line Chart"
         },
