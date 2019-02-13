@@ -13,10 +13,10 @@ Module.register("MMM-ESP", {
 },
 
   getDom: function () {
-
+/*
     var element = document.createElement("div")
         element.setAttribute("id", "chartContainer")    
-
+*/
     var celsius = ["0", "0", "0", "0", "0", "0"]
 
     function myloop() {
@@ -32,7 +32,7 @@ Module.register("MMM-ESP", {
 
       setTimeout(myloop, 10000)
 
-      var chart = new CanvasJS.Chart("chartContainer", {
+      var chart = new CanvasJS.Chart("chart-Container", {
 
         animationEnabled: false,
         theme: "light2",
