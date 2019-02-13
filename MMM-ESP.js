@@ -16,7 +16,6 @@ Module.register("MMM-ESP", {
 
     var element = document.createElement("div")
     element.setAttribute("id", "chart-Container")
-    document.getElementById(element).style.height = '300px';
 
     var celsius = ["0", "0", "0", "0", "0", "0"]
 
