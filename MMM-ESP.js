@@ -14,8 +14,11 @@ Module.register("MMM-ESP", {
 
   getDom: function () {
 
-    var element = document.createElement("div").setAttribute("id", "chart-Container")
-    var element = document.createElement("div").setAttribute("id", "chartContainer")
+    var div = document.createElement('div');
+    div.style.height = '300px';
+    div.style.width = '100%';
+    div.setAttribute('id', 'chartContainer'); // and make sure myclass has some styles in css
+    document.body.appendChild(div);
 
     var celsius = ["0", "0", "0", "0", "0", "0"]
 
