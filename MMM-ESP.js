@@ -18,7 +18,7 @@ Module.register("MMM-ESP", {
 
     var div = document.createElement('div');
     div.setAttribute('id', 'chartContainer'); // and make sure myclass has some styles in css
-    document.getElementById("chartContainer").setAttribute("style", "width:30%";)
+    document.getElementById("chartContainer").setAttribute("style", "width:30%");
     document.body.appendChild(div);
 
     function myloop() {
