@@ -17,7 +17,7 @@ Module.register("MMM-ESP", {
     var celsius = ["0", "0", "0", "0", "0", "0"]
 
     var div = document.createElement('div');
-    div.setAttribute('id', 'chartContainer', style="height: 300px; width: 40%"); // and make sure myclass has some styles in css
+    div.setAttribute('id', 'chartContainer', style="height: 100px; width: 10%"); // and make sure myclass has some styles in css
     document.body.appendChild(div);
 
     function myloop() {
