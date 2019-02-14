@@ -32,7 +32,7 @@ Module.register("MMM-ESP", {
       celsius.push(xhttp.responseText)
       console.log(celsius)
 
-      setTimeout(getDom, 10000)
+      setTimeout(myloop, 10000)
 
       var chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
