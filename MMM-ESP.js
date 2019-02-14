@@ -37,9 +37,7 @@ Module.register("MMM-ESP", {
       var chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: false,
         theme: "light2",
-        height: 150,
-        width: 300,
-        backgroundColor: null,
+        backgroundColor: "transparent",
         title: {
           text: "ESP-8266"
         },
