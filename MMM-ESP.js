@@ -39,7 +39,7 @@ Module.register("MMM-ESP", {
         theme: "light2",
         height: 150,
         width: 300,
-        backgroundColor: rgba(0, 0, 0, 0),
+        backgroundColor: null,
         title: {
           text: "ESP-8266"
         },
