@@ -38,6 +38,7 @@ Module.register("MMM-ESP", {
         animationEnabled: false,
         theme: "light2",
         backgroundColor: "transparent",
+        width: 500,
         title: {
           text: "ESP-8266"
         },
