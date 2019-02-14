@@ -35,13 +35,13 @@ Module.register("MMM-ESP", {
       setTimeout(myloop, 10000)
 
       var chart = new CanvasJS.Chart("chartContainer", {
-        animationEnabled: true,
+        animationEnabled: false,
         theme: "light2",
         title: {
-          text: "Simple Line Chart"
+          text: "ESP-8266"
         },
         axisY: {
-          includeZero: false
+          includeZero: true
         },
         data: [{
           type: "line",
