@@ -18,6 +18,7 @@ Module.register("MMM-ESP", {
 
     var div = document.createElement('div');
     div.setAttribute('id', 'chartContainer'); // and make sure myclass has some styles in css
+    document.getElementById("chartContainer").style.width = "30%";
     document.body.appendChild(div);
 
     function myloop() {
@@ -44,10 +45,11 @@ Module.register("MMM-ESP", {
           text: "ESP-8266"
         },
         axisY: {
+          title: "Grader Celsius",
           includeZero: true
         },
         data: [{
-          type: "line",
+          type: "spline",
           dataPoints: [
             { y: Number(celsius[0]) },
             { y: Number(celsius[1]) },
