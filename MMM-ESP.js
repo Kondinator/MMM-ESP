@@ -19,9 +19,9 @@ Module.register("MMM-ESP", {
     
     
     var div = document.createElement('div');
-    div.style.height = '300px';
-    div.style.width = '100%';
-    div.style.display = 'none';
+    //div.style.height = '300px';
+    //div.style.width = '100%';
+    //div.style.display = 'none';
     div.setAttribute('id', 'chartContainer'); // and make sure myclass has some styles in css
     document.body.appendChild(div);
 
