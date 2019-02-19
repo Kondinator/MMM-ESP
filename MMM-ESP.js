@@ -13,7 +13,7 @@ Module.register("MMM-ESP", {
   },
 
   getDom: function () {
-
+/*
     var celsius = ["0", "0", "0", "0", "0", "0"]
 
     var div = document.createElement('div');
@@ -22,12 +22,12 @@ Module.register("MMM-ESP", {
     document.body.appendChild(div);
 
       var xhttp = new XMLHttpRequest();
-      xhttp.open("GET", "http://10.10.10.166", false);
+
       function myloop() {
+      xhttp.open("GET", "http://10.10.10.166", false);
       xhttp.send()
       //celsius = xhttp.response
 
-      
         celsius.shift()
 
       celsius.push(xhttp.responseText)
@@ -64,6 +64,7 @@ Module.register("MMM-ESP", {
 
     }
     myloop()
+    */
   }
 
 });
