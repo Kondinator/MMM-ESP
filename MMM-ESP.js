@@ -13,58 +13,70 @@ Module.register("MMM-ESP", {
   },
 
   getDom: function () {
-/*
-    var celsius = ["0", "0", "0", "0", "0", "0"]
-
     var div = document.createElement('div');
-    div.id = 'chartContainer';
-    div.setAttribute = "style", "width:30%";
-    document.body.appendChild(div);
+    div.id = 'main';
 
-      var xhttp = new XMLHttpRequest();
+    var celsius = ["0", "0", "0", "0", "0", "0"]
+        var tidspunkt = ["0", "0", "0", "0", "0", "0"]
 
-      function myloop() {
-      xhttp.open("GET", "http://10.10.10.166", false);
-      xhttp.send()
-      //celsius = xhttp.response
+        function myloop() {
+            celsius.shift()
+            tidspunkt.shift()
 
-        celsius.shift()
+            var now = new Date();
+            var m = now.getMinutes();
+            var h = now.getHours();
+            var t = "" + h + ":" + m;
+            console.log(t + " " + h + " " + m)
 
-      celsius.push(xhttp.responseText)
-      console.log(celsius)
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "http://10.10.10.166", false);
+            xhttp.send()
+            celsius.push(xhttp.responseText)
+            tidspunkt.push(t)
+            setTimeout(myloop, 60000)
 
-      setTimeout(myloop, 60000)
 
-      var chart = new CanvasJS.Chart("chartContainer", {
-        animationEnabled: false,
-        theme: "light2",
-        backgroundColor: "transparent",
-        width: 300,
-        height: 200,
-        title: {
-          text: "ESP-8266"
-        },
-        axisY: {
-          title: "Grader Celsius",
-          includeZero: true
-        },
-        data: [{
-          type: "spline",
-          dataPoints: [
-            { y: Number(celsius[0]) },
-            { y: Number(celsius[1]) },
-            { y: Number(celsius[2]) },
-            { y: Number(celsius[3]) },
-            { y: Number(celsius[4]) },
-            { y: Number(celsius[5]) },
-          ]
-        }]
-      });
-      chart.render();
+            // based on prepared DOM, initialize echarts instance
+            var myChart = echarts.init(document.getElementById('main'));
 
-    }
-    myloop()
-    */
+
+            // specify chart configuration item and data
+            var option = {
+                title: {
+                    text: 'ECharts entry example'
+                },
+                tooltip: {},
+
+                xAxis: {
+                    type: 'category',
+                    data: [String(tidspunkt[0]),
+                    String(tidspunkt[1]),
+                    String(tidspunkt[2]),
+                    String(tidspunkt[3]),
+                    String(tidspunkt[4]),
+                    String(tidspunkt[5]),
+
+                    ]
+                },
+                yAxis: {},
+                series: [{
+                    name: 'Sales',
+                    type: 'line',
+                    smooth: true,
+                    data: [Number(celsius[0]),
+                    Number(celsius[1]),
+                    Number(celsius[2]),
+                    Number(celsius[3]),
+                    Number(celsius[4]),
+                    Number(celsius[5])]
+                }]
+            };
+            myChart.setOption(option);
+
+        }
+        myloop()
+    
   }
 
 });
