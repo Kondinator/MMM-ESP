@@ -17,7 +17,7 @@ Module.register("MMM-ESP", {
     div.id = 'echarts';
     document.body.appendChild(div);
 
-    var celsius = ["0", "0", "0", "0", "0", "0"]
+    var celsius = ["0", "0", "0", "0", "0", "0"],
         var tidspunkt = ["0", "0", "0", "0", "0", "0"]
 
         function myloop() {
@@ -28,7 +28,7 @@ Module.register("MMM-ESP", {
             var m = now.getMinutes();
             var h = now.getHours();
             var aTime = "" + h + ":" + m;
-            console.log(t + " " + h + " " + m)
+            console.log(aTime + " " + h + " " + m);
 
             var xhttp = new XMLHttpRequest();
             xhttp.open("GET", "http://10.10.10.166", false);
@@ -36,7 +36,6 @@ Module.register("MMM-ESP", {
             celsius.push(xhttp.responseText)
             tidspunkt.push(aTime)
             setTimeout(myloop, 60000)
-
 
             // based on prepared DOM, initialize echarts instance
             var myChart = echarts.init(document.getElementById('div'));
