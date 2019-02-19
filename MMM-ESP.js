@@ -7,7 +7,27 @@ Module.register("MMM-ESP", {
 
   getScripts: function () {
     return [
-      'https://raw.githubusercontent.com/ecomfe/echarts/4.2.1-rc1/dist/echarts.min.js'
+      'https://raw.githubusercontent.com/ecomfe/echarts/4.2.1-rc1/dist/echarts.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts-en.common.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts-en.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts-en.js.map',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts-en.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts-en.simple.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts-en.simple.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.common.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.common.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.js.map',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.simple.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.simple.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/extension/bmap.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/extension/bmap.js.map',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/extension/bmap.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/extension/dataTool.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/extension/dataTool.js.map',
+      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/extension/dataTool.min.js'
+
 
     ]
   },
