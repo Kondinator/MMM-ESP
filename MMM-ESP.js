@@ -17,7 +17,7 @@ Module.register("MMM-ESP", {
     div.id = 'echarts';
     document.body.appendChild(div);
 
-    var celsius = ["0", "0", "0", "0", "0", "0"],
+    var celsius = ["0", "0", "0", "0", "0", "0"]
         var tidspunkt = ["0", "0", "0", "0", "0", "0"]
 
         function myloop() {
