@@ -21,14 +21,14 @@ Module.register("MMM-ESP", {
     div.setAttribute = "style", "width:30%";
     document.body.appendChild(div);
 
-    function myloop() {
-      celsius.shift()
-
-
       var xhttp = new XMLHttpRequest();
       xhttp.open("GET", "http://10.10.10.166", false);
+      function myloop() {
       xhttp.send()
       //celsius = xhttp.response
+
+      
+        celsius.shift()
 
       celsius.push(xhttp.responseText)
       console.log(celsius)
