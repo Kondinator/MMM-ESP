@@ -14,7 +14,7 @@ Module.register("MMM-ESP", {
 
   getDom: function () {
     var div = document.createElement('div');
-    div.id = 'main';
+    div.id = 'echarts';
 
     var celsius = ["0", "0", "0", "0", "0", "0"]
         var tidspunkt = ["0", "0", "0", "0", "0", "0"]
