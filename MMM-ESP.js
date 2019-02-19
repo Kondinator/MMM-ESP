@@ -7,7 +7,7 @@ Module.register("MMM-ESP", {
 
   getScripts: function () {
     return [
-      'https://raw.githubusercontent.com/ecomfe/echarts/4.2.1-rc1/dist/echarts.min.js',
+      
       'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts-en.common.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts-en.js',
       'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts-en.js.map',
