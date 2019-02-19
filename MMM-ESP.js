@@ -15,6 +15,8 @@ Module.register("MMM-ESP", {
   getDom: function () {
     var div = document.createElement('div');
     div.id = 'echarts';
+    div.setAttribute = "style", "width:30%";
+    document.body.appendChild(div);
 
     var celsius = ["0", "0", "0", "0", "0", "0"]
         var tidspunkt = ["0", "0", "0", "0", "0", "0"]
