@@ -38,7 +38,7 @@ Module.register("MMM-ESP", {
 
 
             // based on prepared DOM, initialize echarts instance
-            var myChart = echarts.init(document.getElementById('main'));
+            var myChart = echarts.init(document.getElementById('echarts'));
 
 
             // specify chart configuration item and data
