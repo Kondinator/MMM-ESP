@@ -7,7 +7,7 @@ Module.register("MMM-ESP", {
 
   getScripts: function () {
     return [
-      'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts-en.common.js'
+      'https://raw.githubusercontent.com/ecomfe/echarts/4.2.1-rc1/dist/echarts.min.js'
 
     ]
   },
@@ -41,7 +41,6 @@ Module.register("MMM-ESP", {
 
             // based on prepared DOM, initialize echarts instance
             var myChart = echarts.init(document.getElementById('echarts'));
-
 
             // specify chart configuration item and data
             var option = {
