@@ -15,7 +15,6 @@ Module.register("MMM-ESP", {
   getDom: function () {
     var div = document.createElement('div');
     div.id = 'echarts';
-    div.setAttribute = "style", "width:30%";
     document.body.appendChild(div);
 
     var celsius = ["0", "0", "0", "0", "0", "0"]
@@ -28,14 +27,14 @@ Module.register("MMM-ESP", {
             var now = new Date();
             var m = now.getMinutes();
             var h = now.getHours();
-            var t = "" + h + ":" + m;
+            var aTime = "" + h + ":" + m;
             console.log(t + " " + h + " " + m)
 
             var xhttp = new XMLHttpRequest();
             xhttp.open("GET", "http://10.10.10.166", false);
             xhttp.send()
             celsius.push(xhttp.responseText)
-            tidspunkt.push(t)
+            tidspunkt.push(aTime)
             setTimeout(myloop, 60000)
 
 
