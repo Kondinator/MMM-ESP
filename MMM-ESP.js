@@ -14,7 +14,7 @@ Module.register("MMM-ESP", {
 
   getDom: function () {
     var div = document.createElement('div');
-    div.id = 'echarts';
+    div.id = 'main';
     document.body.appendChild(div);
 
     var celsius = ["0", "0", "0", "0", "0", "0"]
@@ -38,7 +38,7 @@ Module.register("MMM-ESP", {
             setTimeout(myloop, 60000)
 
             // based on prepared DOM, initialize echarts instance
-            var myChart = echarts.init(document.getElementById('div'));
+            var myChart = echarts.init(document.getElementById('main'));
 
             // specify chart configuration item and data
             var option = {
