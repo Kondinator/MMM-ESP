@@ -38,7 +38,7 @@ Module.register("MMM-ESP", {
             setTimeout(myloop, 60000)
 
             // based on prepared DOM, initialize echarts instance
-            var Chart = echarts.init(document.getElementById('main'));
+            var myChart = echarts.init(document.getElementById('main'));
 
             // specify chart configuration item and data
             var option = {
@@ -72,7 +72,7 @@ Module.register("MMM-ESP", {
                   ]
                 }]
             };
-            Chart.setOption(option);
+            myChart.setOption(option);
 
         }
         myloop()
