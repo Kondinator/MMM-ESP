@@ -13,7 +13,7 @@ Module.register("MMM-ESP", {
   },
 
   getDom: function () {
-    var bodyDiv = document.createElement('Div');
+    var bodyDiv = document.createElement('div');
         console.log('her1')
         bodyDiv.innerHTML = '<div id="main" style="width: 35%;height:250px;"></div>';
         console.log('her2')
