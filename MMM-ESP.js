@@ -44,47 +44,84 @@ Module.register("MMM-ESP", {
             setTimeout(myloop, 60000)
 
             // based on prepared DOM, initialize echarts instance
-            console.log('her7')
             var myChart = echarts.init(document.getElementById('main'));
-            console.log('her8')
             // specify chart configuration item and data
             var option = {
-                title: {
-                    text: 'ECharts entry example'
-                },
-                tooltip: {},
 
-                xAxis: {
-                    type: 'category',
-                    data: [String(tidspunkt[0]),
-                    String(tidspunkt[1]),
-                    String(tidspunkt[2]),
-                    String(tidspunkt[3]),
-                    String(tidspunkt[4]),
-                    String(tidspunkt[5]),
+              title: {
+                  text: 'Rum temperatur',
+                  textStyle: {
+                      color: '#fff',
+                      fontSize: 30,
+                      textShadowBlur: 2,
+                      textShadowColor: '#000',
+                      textShadowOffsetX: 0,
+                      textShadowOffsetY: 1,
+                      textBorderColor: '#333',
+                      textBorderWidth: 2
 
-                    ]
-                },
-                yAxis: {},
-                series: [{
-                    name: 'Sales',
-                    type: 'line',
-                    smooth: true,
-                    data: [Number(celsius[0]),
-                    Number(celsius[1]),
-                    Number(celsius[2]),
-                    Number(celsius[3]),
-                    Number(celsius[4]),
-                    Number(celsius[5])
+                  },
+              },
+
+              tooltip: {
+
+              },
+
+              xAxis: {
+                  type: 'category',
+                  axisLabel: {
+
+                      color: '#fff',
+                      fontSize: 14,
+                      textShadowBlur: 2,
+                      //textShadowColor: '#000',
+                      textShadowOffsetX: 0,
+                      textShadowOffsetY: 1,
+                      textBorderColor: '#333',
+                      textBorderWidth: 2
+                  },
+
+                  data: [
+                      String(tidspunkt[0]),
+                      String(tidspunkt[1]),
+                      String(tidspunkt[2]),
+                      String(tidspunkt[3]),
+                      String(tidspunkt[4]),
+                      String(tidspunkt[5]),
+
+                  ],
+              },
+              yAxis: {
+                  axisLabel: {
+
+                      color: '#fff',
+                      fontSize: 14,
+                      textShadowBlur: 2,
+                      //textShadowColor: '#000',
+                      textShadowOffsetX: 0,
+                      textShadowOffsetY: 1,
+                      textBorderColor: '#333',
+                      textBorderWidth: 2
+                  },
+
+              },
+              series: [{
+                  name: 'Temperatur',
+                  type: 'line',
+                  smooth: true,
+                  data: [
+                      Number(celsius[0]),
+                      Number(celsius[1]),
+                      Number(celsius[2]),
+                      Number(celsius[3]),
+                      Number(celsius[4]),
+                      Number(celsius[5])
                   ]
-                }]
-            };
-            console.log('her9')
-            myChart.setOption(option);
-            console.log('her10  ')
+              }]
+          };
+          myChart.setOption(option);
         }
         myloop()
-        console.log('her11')
         return graphDiv;
   }
 
