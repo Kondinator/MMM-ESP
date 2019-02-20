@@ -85,6 +85,7 @@ Module.register("MMM-ESP", {
         }
         myloop()
         console.log('her11')
+        return graphDiv;
   }
 
 });
