@@ -33,8 +33,11 @@ Module.register("MMM-ESP", {
             var aTime = "" + h + ":" + m;
             console.log(aTime + " " + h + " " + m);
 
+            console.log('her4')
             var xhttp = new XMLHttpRequest();
+            console.log('her5')
             xhttp.open("GET", "http://10.10.10.166", false);
+            console.log('her6')
             xhttp.send()
             celsius.push(xhttp.responseText)
             tidspunkt.push(aTime)
