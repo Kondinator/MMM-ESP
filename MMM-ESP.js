@@ -13,12 +13,12 @@ Module.register("MMM-ESP", {
   },
 
   getDom: function () {
-    var bodyDiv = document.createElement('div');
-        console.log('her1')
-        bodyDiv.innerHTML = '<div id="main" style="width: 35%;height:250px;"></div>';
-        console.log('her2')
-        document.body.appendChild(bodyDiv);
-        console.log('her3')
+
+    var graphDiv = document.createElement('div');
+    graphDiv.setAttribute("main", "graphDiv");
+    graphDiv.style.width = '600px';
+    graphDiv.style.height = '400px';
+    document.body.appendChild(graphDiv);
 
     var celsius = ["0", "0", "0", "0", "0", "0"]
         var tidspunkt = ["0", "0", "0", "0", "0", "0"]
