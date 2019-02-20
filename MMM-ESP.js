@@ -81,9 +81,10 @@ Module.register("MMM-ESP", {
             };
             console.log('her9')
             myChart.setOption(option);
-            console.log('her10')
+            console.log('her10  ')
         }
         myloop()
+        console.log('her11')
   }
 
 });
