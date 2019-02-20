@@ -15,7 +15,7 @@ Module.register("MMM-ESP", {
   getDom: function () {
 
     var graphDiv = document.createElement('div');
-    graphDiv.setAttribute("main", "graphDiv");
+    graphDiv.setAttribute("id", "main");
     graphDiv.style.width = '600px';
     graphDiv.style.height = '400px';
     document.body.appendChild(graphDiv);
