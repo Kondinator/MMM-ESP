@@ -72,7 +72,7 @@ Module.register("MMM-ESP", {
                   ]
                 }]
             };
-            myChart.setOption(option);
+            Chart.setOption(option);
 
         }
         myloop()
