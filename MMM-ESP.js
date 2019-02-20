@@ -14,8 +14,11 @@ Module.register("MMM-ESP", {
 
   getDom: function () {
     var bodyDiv = document.createElement('Div');
-        bodyDiv.innerHTML = '<div id="main" style="width: 600px;height:400px;"></div>';
+        console.log('her1')
+        bodyDiv.innerHTML = '<div id="main" style="width: 35%;height:250px;"></div>';
+        console.log('her2')
         document.body.appendChild(bodyDiv);
+        console.log('her3')
 
     var celsius = ["0", "0", "0", "0", "0", "0"]
         var tidspunkt = ["0", "0", "0", "0", "0", "0"]
