@@ -16,113 +16,115 @@ Module.register("MMM-ESP", {
 
     var graphDiv = document.createElement('div');
     graphDiv.setAttribute("id", "main");
-    graphDiv.style.width = '35%';
+    graphDiv.style.width = '45%';
     graphDiv.style.height = '40%';
     document.body.appendChild(graphDiv);
 
     var celsius = ["0", "0", "0", "0", "0", "0"]
-        var tidspunkt = ["0", "0", "0", "0", "0", "0"]
+    var tidspunkt = ["0", "0", "0", "0", "0", "0"]
 
-        function myloop() {
-            celsius.shift()
-            tidspunkt.shift()
+    function myloop() {
+      celsius.shift()
+      tidspunkt.shift()
 
-            var now = new Date();
-            var m = now.getMinutes();
-            var h = now.getHours();
-            var aTime = "" + h + ":" + m;
-            console.log(aTime + " " + h + " " + m);
+      var now = new Date();
+      var m = now.getMinutes();
+      var h = now.getHours();
+      var aTime = "" + h + ":" + m;
+      console.log(aTime + " " + h + " " + m);
 
-            console.log('her4')
-            var xhttp = new XMLHttpRequest();
-            console.log('her5')
-            xhttp.open("GET", "http://10.10.10.166", false);
-            console.log('her6')
-            xhttp.send()
-            celsius.push(xhttp.responseText)
-            tidspunkt.push(aTime)
-            setTimeout(myloop, 60000)
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("GET", "http://10.10.10.166", false);
+      xhttp.send()
+      celsius.push(xhttp.responseText)
+      tidspunkt.push(aTime)
+      setTimeout(myloop, 60000)
 
-            // based on prepared DOM, initialize echarts instance
-            var myChart = echarts.init(document.getElementById('main'));
-            // specify chart configuration item and data
-            var option = {
+      // based on prepared DOM, initialize echarts instance
+      var myChart = echarts.init(document.getElementById('main'));
+      // specify chart configuration item and data
+      var option = {
 
-              title: {
-                  text: 'Rum temperatur',
-                  textStyle: {
-                      color: '#fff',
-                      fontSize: 30,
-                      textShadowBlur: 2,
-                      textShadowColor: '#000',
-                      textShadowOffsetX: 0,
-                      textShadowOffsetY: 1,
-                      textBorderColor: '#333',
-                      textBorderWidth: 2
+        title: {
+          text: 'Rum temperatur',
+          textStyle: {
+            color: '#fff',
+            fontSize: 20,
+            textShadowBlur: 1,
+            textShadowColor: '#000',
+            textShadowOffsetX: 0,
+            textShadowOffsetY: 1,
+            textBorderColor: '#333',
+            textBorderWidth: 2
 
-                  },
-              },
+          },
+        },
 
-              tooltip: {
+        tooltip: {
+        },
 
-              },
+        xAxis: {
+          type: 'category',
+          axisLabel: {
 
-              xAxis: {
-                  type: 'category',
-                  axisLabel: {
+            color: '#fff',
+            fontSize: 14,
+            textShadowBlur: 2,
+            //textShadowColor: '#000',
+            textShadowOffsetX: 0,
+            textShadowOffsetY: 1,
+            textBorderColor: '#333',
+            textBorderWidth: 2
+          },
 
-                      color: '#fff',
-                      fontSize: 14,
-                      textShadowBlur: 2,
-                      //textShadowColor: '#000',
-                      textShadowOffsetX: 0,
-                      textShadowOffsetY: 1,
-                      textBorderColor: '#333',
-                      textBorderWidth: 2
-                  },
+          data: [
+            String(tidspunkt[0]),
+            String(tidspunkt[1]),
+            String(tidspunkt[2]),
+            String(tidspunkt[3]),
+            String(tidspunkt[4]),
+            String(tidspunkt[5]),
+          ],
+        },
+        yAxis: {
+          axisLabel: {
 
-                  data: [
-                      String(tidspunkt[0]),
-                      String(tidspunkt[1]),
-                      String(tidspunkt[2]),
-                      String(tidspunkt[3]),
-                      String(tidspunkt[4]),
-                      String(tidspunkt[5]),
+            color: '#fff',
+            fontSize: 14,
+            textShadowBlur: 2,
+            //textShadowColor: '#000',
+            textShadowOffsetX: 0,
+            textShadowOffsetY: 1,
+            textBorderColor: '#333',
+            textBorderWidth: 2
+          },
+        },
 
-                  ],
-              },
-              yAxis: {
-                  axisLabel: {
+        series: [{
+          data: [
+            Number(celsius[0]),
+            Number(celsius[1]),
+            Number(celsius[2]),
+            Number(celsius[3]),
+            Number(celsius[4]),
+            Number(celsius[5]),
+          ],
+          type: 'line',
+          smooth: true,
+          lineStyle: {
+            width: 5,
+          }
 
-                      color: '#fff',
-                      fontSize: 14,
-                      textShadowBlur: 2,
-                      //textShadowColor: '#000',
-                      textShadowOffsetX: 0,
-                      textShadowOffsetY: 1,
-                      textBorderColor: '#333',
-                      textBorderWidth: 2
-                  },
 
-              },
-              series: [{
-                  name: 'Temperatur',
-                  type: 'line',
-                  smooth: true,
-                  data: [
-                      Number(celsius[0]),
-                      Number(celsius[1]),
-                      Number(celsius[2]),
-                      Number(celsius[3]),
-                      Number(celsius[4]),
-                      Number(celsius[5])
-                  ]
-              }]
-          };
-          myChart.setOption(option);
-        }
-        myloop()
-        return graphDiv;
+
+
+
+        }]
+      };
+      myChart.setOption(option);
+    }
+    myloop()
+    return graphDiv;
   }
 
 });
