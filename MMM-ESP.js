@@ -13,9 +13,9 @@ Module.register("MMM-ESP", {
   },
 
   getDom: function () {
-    var div = document.createElement('div');
-    div.id = 'main';
-    document.body.appendChild(div);
+    var bodyDiv = document.createElement('Div');
+        bodyDiv.innerHTML = '<div id="main" style="width: 600px;height:400px;"></div>';
+        document.body.appendChild(bodyDiv);
 
     var celsius = ["0", "0", "0", "0", "0", "0"]
         var tidspunkt = ["0", "0", "0", "0", "0", "0"]
