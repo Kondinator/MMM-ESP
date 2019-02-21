@@ -20,8 +20,8 @@ Module.register("MMM-ESP", {
     graphDiv.style.height = '40%';
     document.body.appendChild(graphDiv);
 
-    var celsius = ["0", "0", "0", "0", "0", "0"]
-    var tidspunkt = ["0", "0", "0", "0", "0", "0"]
+    var celsius = ["", "", "", "", "", "",]
+    var tidspunkt = ["", "", "", "", "", ""]
 
     function myloop() {
       celsius.shift()
@@ -32,7 +32,7 @@ Module.register("MMM-ESP", {
           i = "0" + i;
         }
         return i;
-      }   
+      }
 
       var now = new Date();
       var m = addZero(now.getMinutes());
@@ -56,67 +56,82 @@ Module.register("MMM-ESP", {
           text: 'Rum temperatur',
           textStyle: {
             color: '#fff',
-            fontSize: 20,
+            fontSize: 30,
             textBorderColor: '#333',
             textBorderWidth: 2
 
           },
+
         },
 
         tooltip: {
+
         },
 
-        xAxis: {
+        xAxis: { //bunden
           type: 'category',
+          //interval: 6,
+
+          axisTick: {
+            //alignWithLabel: true,
+          },
+
           axisLabel: {
 
+            align: 'center',
             color: '#fff',
             fontSize: 14,
             textBorderColor: '#333',
-            textBorderWidth: 2
+            textBorderWidth: '2',
+            showMinLabel: true,
+            showMaxLabel: true,
+
           },
 
-          data: [
-            String(tidspunkt[0]),
-            String(tidspunkt[1]),
-            String(tidspunkt[2]),
-            String(tidspunkt[3]),
-            String(tidspunkt[4]),
-            String(tidspunkt[5]),
-          ],
+          data: [String(tidspunkt[0]),
+          String(tidspunkt[1]),
+          String(tidspunkt[2]),
+          String(tidspunkt[3]),
+          String(tidspunkt[4]),
+          String(tidspunkt[5]),
+          ]
+
         },
-        yAxis: {
-          axisLabel: {
+        yAxis: { //siden
 
+          axisLabel: {
+            //interval: 1,
             color: '#fff',
             fontSize: 14,
             textBorderColor: '#333',
-            textBorderWidth: 2
+            textBorderWidth: '2',
+            showMinLabel: true,
+            showMaxLabel: true,
+            showLabel: true,
+
           },
+
         },
 
         series: [{
-          data: [
-            Number(celsius[0]),
-            Number(celsius[1]),
-            Number(celsius[2]),
-            Number(celsius[3]),
-            Number(celsius[4]),
-            Number(celsius[5]),
-          ],
+          name: 'Temperatur',
           type: 'line',
           smooth: true,
           lineStyle: {
             width: 5,
-          }
+          },
+          data: [Number(celsius[0]),
+          Number(celsius[1]),
+          Number(celsius[2]),
+          Number(celsius[3]),
+          Number(celsius[4]),
+          Number(celsius[5]),
 
-
-
-
-
+          ]
         }]
       };
       myChart.setOption(option);
+
     }
     myloop()
     return graphDiv;
