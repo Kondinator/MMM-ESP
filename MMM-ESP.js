@@ -57,6 +57,10 @@ Module.register("MMM-ESP", {
           textStyle: {
             color: '#fff',
             fontSize: 30,
+            textShadowBlur: 2,
+            textShadowColor: '#000',
+            textShadowOffsetX: 0,
+            textShadowOffsetY: 1,
             textBorderColor: '#333',
             textBorderWidth: 2
 
@@ -78,36 +82,37 @@ Module.register("MMM-ESP", {
 
           axisLabel: {
 
-            align: 'left',
-            color: '#fff',
-            fontSize: 14,
-            textBorderColor: '#333',
-            textBorderWidth: '2',
-            showMinLabel: true,
-            showMaxLabel: true,
+            //align: 'center',
+            //color: '#fff',
+            fontSize: 15,
+            //textBorderColor: '#333',
+            //textBorderWidth: '2',
+            //showMinLabel: true,
+            //showMaxLabel: true,
 
           },
 
-          data: [String(tidspunkt[0]),
-          String(tidspunkt[1]),
-          String(tidspunkt[2]),
-          String(tidspunkt[3]),
-          String(tidspunkt[4]),
-          String(tidspunkt[5]),
+          data: [tidspunkt[0],
+          tidspunkt[1],
+          tidspunkt[2],
+          tidspunkt[3],
+          tidspunkt[4],
+          tidspunkt[5],
           ]
 
         },
         yAxis: { //siden
+          type: 'value',
 
           axisLabel: {
-            //interval: 1,
-            color: '#fff',
-            fontSize: 14,
-            textBorderColor: '#333',
-            textBorderWidth: '2',
-            showMinLabel: true,
-            showMaxLabel: true,
-            showLabel: true,
+            show: true,
+            color: 'black',
+            fontSize: 15,
+            //textBorderColor: 'white', //bugged
+            //textBorderWidth: '2', //bugged
+            //showMinLabel: true,
+            //showMaxLabel: true,
+
 
           },
 
