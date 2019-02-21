@@ -20,8 +20,8 @@ Module.register("MMM-ESP", {
     graphDiv.style.height = '40%';
     document.body.appendChild(graphDiv);
 
-    var celsius = ["0", "0", "0", "0", "0", "0",]
-    var tidspunkt = ["0", "0", "0", "0", "0", "0"]
+    var celsius = new Array(6).fill(null);
+    var tidspunkt = new Array(6).fill(0);
 
     function myloop() {
       celsius.shift()
@@ -33,23 +33,26 @@ Module.register("MMM-ESP", {
         }
         return i;
       }
-      var lowest = (Math.round(Math.min(...celsius))) - 5   ;
-      var highest = (Math.round(Math.max(...celsius))) + 5   ;
+
+      var lowest = (Math.round(Math.min(...celsius))) - 3;
+      var highest = (Math.round(Math.max(...celsius))) + 3;
       var now = new Date();
       var m = addZero(now.getMinutes());
       var h = addZero(now.getHours());
-      var aTime = "" + h + ":" + m;
-      console.log(aTime + " " + h + " " + m);
+      var t = h + ":" + m;
+      var setTime = String(t);
+      console.log(setTime + " " + h + " " + m)
 
       var xhttp = new XMLHttpRequest();
       xhttp.open("GET", "http://10.10.10.166", false);
       xhttp.send()
       celsius.push(Number(xhttp.responseText))
-      tidspunkt.push(aTime)
-      setTimeout(myloop, 60000)
+      tidspunkt.push(setTime)
+      setTimeout(myloop, 600000)
 
       // based on prepared DOM, initialize echarts instance
       var myChart = echarts.init(document.getElementById('main'));
+
       // specify chart configuration item and data
       var option = {
 
@@ -64,51 +67,38 @@ Module.register("MMM-ESP", {
             textShadowOffsetY: 1,
             textBorderColor: '#333',
             textBorderWidth: 2
-
           },
-
         },
 
         tooltip: {
-
         },
 
         xAxis: { //bunden
           type: 'category',
-          //interval: 6,
 
           axisTick: {
             //alignWithLabel: true,
           },
 
           axisLabel: {
-
             //align: 'center',
             color: 'black',
             fontSize: 15,
-            textShadowBlur: 2,
+            textShadowBlur: 1,
             textShadowColor: 'white',
-            textShadowOffsetX: 0,
+            textShadowOffsetX: 1,
             textShadowOffsetY: 1,
             //textBorderColor: '#333',
             //textBorderWidth: '2',
             //showMinLabel: true,
             //showMaxLabel: true,
-
           },
 
-          data: [tidspunkt[0],
-          tidspunkt[1],
-          tidspunkt[2],
-          tidspunkt[3],
-          tidspunkt[4],
-          tidspunkt[5],
-          ]
-
+          data: tidspunkt
         },
         yAxis: { //siden
-          max: highest,
           min: lowest,
+          max: highest,
           type: 'value',
 
           axisLabel: {
@@ -123,10 +113,7 @@ Module.register("MMM-ESP", {
             //textBorderWidth: '2', //bugged
             //showMinLabel: true,
             //showMaxLabel: true,
-
-
           },
-
         },
 
         series: [{
@@ -136,18 +123,12 @@ Module.register("MMM-ESP", {
           lineStyle: {
             width: 5,
           },
-          data: [celsius[0],
-          celsius[1],
-          celsius[2],
-          celsius[3],
-          celsius[4],
-          celsius[5],
 
-          ]
+          data: celsius
         }]
       };
-      myChart.setOption(option);
 
+      myChart.setOption(option);
     }
     myloop()
     return graphDiv;
