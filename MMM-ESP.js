@@ -33,7 +33,8 @@ Module.register("MMM-ESP", {
         }
         return i;
       }
-
+      var lowest = (Math.round(Math.min(...celsius))) - 5   ;
+      var highest = (Math.round(Math.max(...celsius))) + 5   ;
       var now = new Date();
       var m = addZero(now.getMinutes());
       var h = addZero(now.getHours());
@@ -43,7 +44,7 @@ Module.register("MMM-ESP", {
       var xhttp = new XMLHttpRequest();
       xhttp.open("GET", "http://10.10.10.166", false);
       xhttp.send()
-      celsius.push(xhttp.responseText)
+      celsius.push(Number(xhttp.responseText))
       tidspunkt.push(aTime)
       setTimeout(myloop, 60000)
 
@@ -106,6 +107,8 @@ Module.register("MMM-ESP", {
 
         },
         yAxis: { //siden
+          max: highest,
+          min: lowest,
           type: 'value',
 
           axisLabel: {
@@ -133,12 +136,12 @@ Module.register("MMM-ESP", {
           lineStyle: {
             width: 5,
           },
-          data: [Number(celsius[0]),
-          Number(celsius[1]),
-          Number(celsius[2]),
-          Number(celsius[3]),
-          Number(celsius[4]),
-          Number(celsius[5]),
+          data: [celsius[0],
+          celsius[1],
+          celsius[2],
+          celsius[3],
+          celsius[4],
+          celsius[5],
 
           ]
         }]
