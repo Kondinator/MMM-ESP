@@ -78,7 +78,7 @@ Module.register("MMM-ESP", {
 
           axisLabel: {
 
-            align: 'center',
+            align: 'left',
             color: '#fff',
             fontSize: 14,
             textBorderColor: '#333',
