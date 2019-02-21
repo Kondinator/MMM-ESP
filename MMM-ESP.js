@@ -20,8 +20,8 @@ Module.register("MMM-ESP", {
     graphDiv.style.height = '40%';
     document.body.appendChild(graphDiv);
 
-    var celsius = ["", "", "", "", "", "",]
-    var tidspunkt = ["", "", "", "", "", ""]
+    var celsius = ["0", "0", "0", "0", "0", "0",]
+    var tidspunkt = ["0", "0", "0", "0", "0", "0"]
 
     function myloop() {
       celsius.shift()
@@ -83,8 +83,12 @@ Module.register("MMM-ESP", {
           axisLabel: {
 
             //align: 'center',
-            //color: '#fff',
+            color: 'black',
             fontSize: 15,
+            textShadowBlur: 2,
+            textShadowColor: 'white',
+            textShadowOffsetX: 0,
+            textShadowOffsetY: 1,
             //textBorderColor: '#333',
             //textBorderWidth: '2',
             //showMinLabel: true,
@@ -108,6 +112,10 @@ Module.register("MMM-ESP", {
             show: true,
             color: 'black',
             fontSize: 15,
+            textShadowBlur: 2,
+            textShadowColor: 'white',
+            textShadowOffsetX: 0,
+            textShadowOffsetY: 1,
             //textBorderColor: 'white', //bugged
             //textBorderWidth: '2', //bugged
             //showMinLabel: true,
