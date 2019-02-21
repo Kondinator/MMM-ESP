@@ -16,7 +16,7 @@ Module.register("MMM-ESP", {
 
     var graphDiv = document.createElement('div');
     graphDiv.setAttribute("id", "main");
-    graphDiv.style.width = '45%';
+    graphDiv.style.width = '55%';
     graphDiv.style.height = '40%';
     document.body.appendChild(graphDiv);
 
@@ -27,9 +27,16 @@ Module.register("MMM-ESP", {
       celsius.shift()
       tidspunkt.shift()
 
+      function addZero(i) {
+        if (i < 10) {
+          i = "0" + i;
+        }
+        return i;
+      }   
+
       var now = new Date();
-      var m = now.getMinutes();
-      var h = now.getHours();
+      var m = addZero(now.getMinutes());
+      var h = addZero(now.getHours());
       var aTime = "" + h + ":" + m;
       console.log(aTime + " " + h + " " + m);
 
@@ -50,10 +57,6 @@ Module.register("MMM-ESP", {
           textStyle: {
             color: '#fff',
             fontSize: 20,
-            textShadowBlur: 1,
-            textShadowColor: '#000',
-            textShadowOffsetX: 0,
-            textShadowOffsetY: 1,
             textBorderColor: '#333',
             textBorderWidth: 2
 
@@ -69,10 +72,6 @@ Module.register("MMM-ESP", {
 
             color: '#fff',
             fontSize: 14,
-            textShadowBlur: 2,
-            //textShadowColor: '#000',
-            textShadowOffsetX: 0,
-            textShadowOffsetY: 1,
             textBorderColor: '#333',
             textBorderWidth: 2
           },
@@ -91,10 +90,6 @@ Module.register("MMM-ESP", {
 
             color: '#fff',
             fontSize: 14,
-            textShadowBlur: 2,
-            //textShadowColor: '#000',
-            textShadowOffsetX: 0,
-            textShadowOffsetY: 1,
             textBorderColor: '#333',
             textBorderWidth: 2
           },
