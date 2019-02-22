@@ -34,8 +34,18 @@ Module.register("MMM-ESP", {
         return i;
       }
 
-      var lowest = (Math.round(Math.min(...celsius))) - 5;
-      var highest = (Math.round(Math.max(...celsius))) + 5;
+      function round5u(x)
+            {
+                return Math.ceil(x/5)*5;
+            }
+    
+            function round5d(x)
+            {
+                return Math.floor(x/5)*5;
+            }
+
+      var lowest = (Math.round(Math.min(...celsius)));
+      var highest = (Math.round(Math.max(...celsius)));
       var now = new Date();
       var m = addZero(now.getMinutes());
       var h = addZero(now.getHours());
@@ -97,8 +107,8 @@ Module.register("MMM-ESP", {
           data: tidspunkt
         },
         yAxis: { //siden
-          min: lowest,
-          max: highest,
+          min: round5d(lowest),
+          max: round5u(highest),
           type: 'value',
 
           axisLabel: {
