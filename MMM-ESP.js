@@ -34,8 +34,8 @@ Module.register("MMM-ESP", {
         return i;
       }
 
-      var lowest = (Math.round(Math.min(...celsius))) - 3;
-      var highest = (Math.round(Math.max(...celsius))) + 3;
+      var lowest = (Math.round(Math.min(...celsius))) - 5;
+      var highest = (Math.round(Math.max(...celsius))) + 5;
       var now = new Date();
       var m = addZero(now.getMinutes());
       var h = addZero(now.getHours());
