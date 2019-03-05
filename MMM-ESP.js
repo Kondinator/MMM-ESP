@@ -16,8 +16,8 @@ Module.register("MMM-ESP", {
 
     var graphDiv = document.createElement('div');
     graphDiv.setAttribute("id", "main");
-    graphDiv.style.width = '100%';
-    graphDiv.style.height = '400%';
+    graphDiv.style.width = '55%';
+    graphDiv.style.height = '40%';
     document.body.appendChild(graphDiv);
 
     var celsius1 = new Array(6).fill(null);
