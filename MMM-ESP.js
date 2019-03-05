@@ -34,8 +34,7 @@ Module.register("MMM-ESP", {
                 
             };
             xhttp.open("GET", "http://10.10.10.166", false);
-            xhttp.send();
-            
+            xhttp.send();      
         }
 
         function loadVandTemp() {
@@ -80,14 +79,8 @@ Module.register("MMM-ESP", {
         var t = "" + h + ":" + m;
         var setTime = String(t);
 
-        
-            
-        
-        
         loadRumTemp()
         loadVandTemp()
-
-        
 
         setTimeout(myloop, 6000)
         tidspunkt.push(setTime)
@@ -103,14 +96,16 @@ Module.register("MMM-ESP", {
         xhttp.open("GET", "http://10.10.10.166", false);
         xhttp.send();
         //var x1Array = xhttp.responseText.split(',')
-        celsius1.push(Number(xhttp.responseText))
+        //arrayCelsius1.push(x1Array[0])
+        //arrayCelsius2.push(x1Array[1])
+        celsius1.push(Number(arrayCelsius1))
+        celsius2.push(Number(arrayCelsius2))
         //console.log(t + ' : ' + x1Array[0] + ' - ' + x1Array[1])
-        //celsius1.push(x1Array[0])
+        
+        
 
-        xhttp.open("GET", "http://10.10.10.191", false);
-        xhttp.send();
-        celsius2.push(Number(xhttp.responseText))
-
+        denne kode ville blive brugt hvis dataen blev hentet fra samme hjemmeside, her vil jeg dele daten op i string delt af kommaer
+        og så sætte delene ind i et array.
         */
 
         // based on prepared DOM, initialize echarts instance
@@ -118,22 +113,6 @@ Module.register("MMM-ESP", {
 
         // specify chart configuration item and data
         var option = {
-
-            title: {
-                text: 'Rum temperatur',
-                textStyle: {
-                    color: '#fff',
-                    fontSize: 20,
-                    textShadowBlur: 2,
-                    textShadowColor: '#000',
-                    textShadowOffsetX: 0,
-                    textShadowOffsetY: 1,
-                    textBorderColor: '#333',
-                    textBorderWidth: 2
-
-                },
-
-            },
 
             legend: {
                 textStyle: {
@@ -176,6 +155,10 @@ Module.register("MMM-ESP", {
                 min: round5d(lowest),
                 max: round5u(highest),
                 type: 'value',
+
+                axisTick: {
+                  interval: 2.5,
+              },
 
                 axisLabel: {
                     show: true,
