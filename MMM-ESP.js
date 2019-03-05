@@ -82,7 +82,7 @@ Module.register("MMM-ESP", {
         loadRumTemp()
         loadVandTemp()
 
-        setTimeout(myloop, 6000)
+        setTimeout(myloop, 600000)
         tidspunkt.push(setTime)
 
         /*
