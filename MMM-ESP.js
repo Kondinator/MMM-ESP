@@ -170,8 +170,8 @@ Module.register("MMM-ESP", {
                     textShadowOffsetY: 1,
                     //textBorderColor: 'white', //bugged
                     //textBorderWidth: '2', //bugged
-                    //showMinLabel: true,
-                    //showMaxLabel: true,
+                    showMinLabel: true,
+                    showMaxLabel: true,
 
                 },
             },
