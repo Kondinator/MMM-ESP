@@ -16,129 +16,209 @@ Module.register("MMM-ESP", {
 
     var graphDiv = document.createElement('div');
     graphDiv.setAttribute("id", "main");
-    graphDiv.style.width = '55%';
-    graphDiv.style.height = '40%';
+    graphDiv.style.width = '100%';
+    graphDiv.style.height = '400%';
     document.body.appendChild(graphDiv);
 
-    var celsius = new Array(6).fill(null);
-    var tidspunkt = new Array(6).fill(0);
+    var celsius1 = new Array(6).fill(null);
+    var celsius2 = new Array(6).fill(null);
+    var tidspunkt = new Array(6).fill();
+
+    function loadRumTemp() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    celsius1.push(Number(xhttp.responseText))
+                      console.log('temp 1 pushed')
+                }
+                
+            };
+            xhttp.open("GET", "http://10.10.10.166", false);
+            xhttp.send();
+            
+        }
+
+        function loadVandTemp() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    celsius2.push(Number(xhttp.responseText))
+                    console.log('temp 2 pushed')
+                }
+                
+            };
+            xhttp.open("GET", "http://10.10.10.191", false);
+            xhttp.send();
+        }
 
     function myloop() {
-      celsius.shift()
-      tidspunkt.shift()
+        celsius1.shift()
+        celsius2.shift()
+        tidspunkt.shift()
 
-      function addZero(i) {
-        if (i < 10) {
-          i = "0" + i;
+        function addZero(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
         }
-        return i;
-      }
 
-      function round5u(x)
-            {
-                return Math.ceil(x/5)*5;
+        function round5u(x) {
+            return Math.ceil(x / 5) * 5;
+        }
+
+        function round5d(x) {
+            return Math.floor(x / 5) * 5;
+        }
+
+        var lowest = (Math.round(Math.min(...celsius1, ...celsius2 )))
+        var highest = (Math.round(Math.max(...celsius1, ...celsius2)))
+        console.log(lowest + ' <LH> ' + highest)
+        var now = new Date();
+        var m = addZero(now.getMinutes());
+        var h = addZero(now.getHours());
+        var t = "" + h + ":" + m;
+        var setTime = String(t);
+
+        
+            
+        
+        
+        loadRumTemp()
+        loadVandTemp()
+
+        
+
+        setTimeout(myloop, 6000)
+        tidspunkt.push(setTime)
+
+        /*
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log('success')
             }
-    
-            function round5d(x)
+        };
+        xhttp.open("GET", "http://10.10.10.166", false);
+        xhttp.send();
+        //var x1Array = xhttp.responseText.split(',')
+        celsius1.push(Number(xhttp.responseText))
+        //console.log(t + ' : ' + x1Array[0] + ' - ' + x1Array[1])
+        //celsius1.push(x1Array[0])
+
+        xhttp.open("GET", "http://10.10.10.191", false);
+        xhttp.send();
+        celsius2.push(Number(xhttp.responseText))
+
+        */
+
+        // based on prepared DOM, initialize echarts instance
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // specify chart configuration item and data
+        var option = {
+
+            title: {
+                text: 'Rum temperatur',
+                textStyle: {
+                    color: '#fff',
+                    fontSize: 20,
+                    textShadowBlur: 2,
+                    textShadowColor: '#000',
+                    textShadowOffsetX: 0,
+                    textShadowOffsetY: 1,
+                    textBorderColor: '#333',
+                    textBorderWidth: 2
+
+                },
+
+            },
+
+            legend: {
+                textStyle: {
+                    fontSize: 15,
+                    textShadowBlur: 1,
+                    textShadowColor: 'white',
+                    textShadowOffsetX: 1,
+                    textShadowOffsetY: 1,
+                },
+                data: ['Rum temperatur', 'Vandmåler temperatur']
+            },
+
+            xAxis: { //bunden
+                type: 'category',
+
+                axisTick: {
+                    //alignWithLabel: true,
+                },
+
+                axisLabel: {
+                    //align: 'center',
+                    color: 'black',
+                    fontSize: 15,
+                    textShadowBlur: 1,
+                    textShadowColor: 'white',
+                    textShadowOffsetX: 1,
+                    textShadowOffsetY: 1,
+                    //textBorderColor: '#333',
+                    //textBorderWidth: '2',
+                    //showMinLabel: true,
+                    //showMaxLabel: true,
+
+                },
+
+                data: tidspunkt
+
+
+            },
+            yAxis: { //siden
+                min: round5d(lowest),
+                max: round5u(highest),
+                type: 'value',
+
+                axisLabel: {
+                    show: true,
+                    color: 'black',
+                    fontSize: 15,
+                    textShadowBlur: 2,
+                    textShadowColor: 'white',
+                    textShadowOffsetX: 0,
+                    textShadowOffsetY: 1,
+                    //textBorderColor: 'white', //bugged
+                    //textBorderWidth: '2', //bugged
+                    //showMinLabel: true,
+                    //showMaxLabel: true,
+
+                },
+            },
+
+            series: [{
+                name: 'Rum temperatur',
+                type: 'line',
+                smooth: true,
+                symbolSize: 8,
+                lineStyle: {
+                    width: 5,
+                },
+                data: celsius1
+            },
+
             {
-                return Math.floor(x/5)*5;
+                name: 'Vandmåler temperatur',
+                type: 'line',
+                smooth: true,
+                symbolSize: 8,
+                lineStyle: {
+                    width: 5,
+                },
+                data: celsius2
+
             }
+            ]
+        };
+        myChart.setOption(option);
 
-      var lowest = (Math.round(Math.min(...celsius)));
-      var highest = (Math.round(Math.max(...celsius)));
-      var now = new Date();
-      var m = addZero(now.getMinutes());
-      var h = addZero(now.getHours());
-      var t = h + ":" + m;
-      var setTime = String(t);
-      console.log(setTime + " " + h + " " + m)
-
-      var xhttp = new XMLHttpRequest();
-      xhttp.open("GET", "http://10.10.10.166", false);
-      xhttp.send()
-      celsius.push(Number(xhttp.responseText))
-      tidspunkt.push(setTime)
-      setTimeout(myloop, 600000)
-
-      // based on prepared DOM, initialize echarts instance
-      var myChart = echarts.init(document.getElementById('main'));
-
-      // specify chart configuration item and data
-      var option = {
-
-        title: {
-          text: 'Rum temperatur',
-          textStyle: {
-            color: '#fff',
-            fontSize: 30,
-            textShadowBlur: 2,
-            textShadowColor: '#000',
-            textShadowOffsetX: 0,
-            textShadowOffsetY: 1,
-            textBorderColor: '#333',
-            textBorderWidth: 2
-          },
-        },
-
-        tooltip: {
-        },
-
-        xAxis: { //bunden
-          type: 'category',
-
-          axisTick: {
-            //alignWithLabel: true,
-          },
-
-          axisLabel: {
-            //align: 'center',
-            color: 'black',
-            fontSize: 15,
-            textShadowBlur: 1,
-            textShadowColor: 'white',
-            textShadowOffsetX: 1,
-            textShadowOffsetY: 1,
-            //textBorderColor: '#333',
-            //textBorderWidth: '2',
-            //showMinLabel: true,
-            //showMaxLabel: true,
-          },
-
-          data: tidspunkt
-        },
-        yAxis: { //siden
-          min: round5d(lowest),
-          max: round5u(highest),
-          type: 'value',
-
-          axisLabel: {
-            show: true,
-            color: 'black',
-            fontSize: 15,
-            textShadowBlur: 2,
-            textShadowColor: 'white',
-            textShadowOffsetX: 0,
-            textShadowOffsetY: 1,
-            //textBorderColor: 'white', //bugged
-            //textBorderWidth: '2', //bugged
-            //showMinLabel: true,
-            //showMaxLabel: true,
-          },
-        },
-
-        series: [{
-          name: 'Temperatur',
-          type: 'line',
-          smooth: true,
-          lineStyle: {
-            width: 5,
-          },
-
-          data: celsius
-        }]
-      };
-
-      myChart.setOption(option);
     }
     myloop()
     return graphDiv;
