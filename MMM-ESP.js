@@ -17,7 +17,7 @@ Module.register("MMM-ESP", {
         var graphDiv = document.createElement('div');
         graphDiv.setAttribute("id", "main");
         graphDiv.style.width = '55%';
-        graphDiv.style.height = '40%';
+        graphDiv.style.height = '50%';
         document.body.appendChild(graphDiv);
 
         var celsius1 = new Array(6).fill();
@@ -79,7 +79,7 @@ Module.register("MMM-ESP", {
             tidspunkt.shift()
             loadRumTemp()
             loadVandTemp()
-            setTimeout(myloop, 6000)
+            setTimeout(myloop, 600000)
 
             //test tal til array. tal mellem 5 og 25(30)
             //celsius1.push(Math.floor((Math.random() * 25) + 5))
