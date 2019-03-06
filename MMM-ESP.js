@@ -135,7 +135,7 @@ Module.register("MMM-ESP", {
                     type: 'category',
 
                     axisTick: {
-                        //alignWithLabel: true,
+                        alignWithLabel: true,
                     },
 
                     axisLabel: {
@@ -162,7 +162,7 @@ Module.register("MMM-ESP", {
                     type: 'value',
 
                     axisTick: {
-                        interval: 5,
+                        interval: 1,
                     },
 
                     axisLabel: {
