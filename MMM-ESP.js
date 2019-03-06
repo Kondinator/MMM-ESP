@@ -162,7 +162,7 @@ Module.register("MMM-ESP", {
                     type: 'value',
 
                     axisTick: {
-                        interval: 2.5,
+                        interval: 5,
                     },
 
                     axisLabel: {
