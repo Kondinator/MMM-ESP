@@ -27,42 +27,50 @@ Module.register("MMM-ESP", {
         function loadRumTemp() {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
+
                 if (this.readyState == 4 && this.status == 200) {
 
-                    rumTempTal = Math.round(xhttp.responseText)
+                    console.log('rum success')
+                    rumTempTal = xhttp.responseText //sæt Math.round på for at kun vise runde tal
                     celsius1.push(Number(rumTempTal))
                     console.log(Number(xhttp.responseText) + ' temp 1 pushed')
-
                     var size = celsius1.filter(function (value) { return value !== undefined }).length;
                     console.log(size);
 
                     if (size < 6) {
+
                         celsius1.fill(rumTempTal)
                         console.log('celsius 1 filled')
                     }
-
                 }
 
-            };
+            }
             xhttp.open("GET", "http://10.10.10.166", false);
             xhttp.send();
+
         }
 
         function loadVandTemp() {
+
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
 
-                    vandTempTal = Math.round(xhttp.responseText)
-                    celsius2.push(Number(vandTempTal))
-                    console.log(Number(xhttp.responseText) + ' temp 2 pushed')
+                console.log('ready state change')
+
+                if (xhttp.readyState === 4 && xhttp.status === 200) {
+                    console.log(this.readyState)
+                    console.log(this.status)
+
+                    console.log('vand success');
+                    vandTempTal = xhttp.responseText; //sæt Math.round på for at kun vise Runde tal
+                    celsius2.push(Number(vandTempTal));
+                    console.log(Number(xhttp.responseText) + ' temp 2 pushed');
                     var size = celsius2.filter(function (value) { return value !== undefined }).length;
-
-                    console.log(size);
+                    // ovre var tager et array of filtrere det fra værdier som er lig= undefined
 
                     if (size < 6) {
                         celsius2.fill(vandTempTal)
-                        console.log('celsius 2 filled')
+                        console.log('celsius 2 filled');
                     }
 
                 }
@@ -70,16 +78,26 @@ Module.register("MMM-ESP", {
             };
             xhttp.open("GET", "http://10.10.10.191", false);
             xhttp.send();
+
         }
+
+        function filltidspunkt(x) {
+            var tsize = tidspunkt.filter(function (value) { return value !== undefined }).length;
+            tidspunkt.push(x)
+
+            if (tsize < 5) {
+                tidspunkt.fill(x)
+                console.log('tidspunkt filled ' + tsize)
+            }
+
+        };
 
         function myloop() {
 
+            setTimeout(myloop, 600000) //opdatering af grafen i milli-sekunder
             celsius1.shift()
             celsius2.shift()
             tidspunkt.shift()
-            loadRumTemp()
-            loadVandTemp()
-            setTimeout(myloop, 600000)
 
             //test tal til array. tal mellem 5 og 25(30)
             //celsius1.push(Math.floor((Math.random() * 25) + 5))
@@ -100,10 +118,13 @@ Module.register("MMM-ESP", {
                 return Math.floor(x / 5) * 5;
             }
 
+            loadRumTemp()
+            loadVandTemp()
+
             var SamletCelsius = celsius1.concat(celsius2)
-            var highest = Math.max(...SamletCelsius)
-            var lowest = Math.min(...SamletCelsius)
-            console.log(SamletCelsius)
+            var filtered = SamletCelsius.filter(Number)
+            var highest = Math.max(...filtered)
+            var lowest = Math.min(...filtered)
             console.log(lowest + ' <LH> ' + highest)
 
             var now = new Date();
@@ -112,7 +133,7 @@ Module.register("MMM-ESP", {
             var t = "" + h + ":" + m;
             var setTime = String(t);
 
-            tidspunkt.push(setTime)
+            filltidspunkt(setTime)
 
             // based on prepared DOM, initialize echarts instance
             var myChart = echarts.init(document.getElementById('main'));
@@ -135,7 +156,7 @@ Module.register("MMM-ESP", {
                     type: 'category',
 
                     axisTick: {
-                        alignWithLabel: true,
+                        //alignWithLabel: true,
                     },
 
                     axisLabel: {
@@ -154,6 +175,7 @@ Module.register("MMM-ESP", {
                     },
 
                     data: tidspunkt
+
 
                 },
                 yAxis: { //siden
@@ -206,6 +228,7 @@ Module.register("MMM-ESP", {
                             },
                         ]
                     },
+
 
                     lineStyle: {
                         width: 5,
