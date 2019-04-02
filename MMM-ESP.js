@@ -24,6 +24,7 @@ Module.register("MMM-ESP", {
         var celsius2 = new Array(6).fill();
         var tidspunkt = new Array(6).fill();
 
+        /*
         function loadRumTemp() {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
@@ -49,6 +50,7 @@ Module.register("MMM-ESP", {
             xhttp.send();
 
         }
+*/
 
         function loadVandTemp() {
 
@@ -118,11 +120,12 @@ Module.register("MMM-ESP", {
                 return Math.floor(x / 5) * 5;
             }
 
-            loadRumTemp()
+            //loadRumTemp()
             loadVandTemp()
 
-            var SamletCelsius = celsius1.concat(celsius2)
-            var filtered = SamletCelsius.filter(Number)
+            //var SamletCelsius = celsius1.concat(celsius2)
+            //var filtered = SamletCelsius.filter(Number)
+            var filtered = celsius2.filter(Number)
             var highest = Math.max(...filtered)
             var lowest = Math.min(...filtered)
             console.log(lowest + ' <LH> ' + highest)
@@ -203,7 +206,11 @@ Module.register("MMM-ESP", {
                     },
                 },
 
+                
+
                 series: [{
+
+                    /*
                     name: 'Rum temperatur',
                     type: 'line',
                     smooth: true,
@@ -236,7 +243,8 @@ Module.register("MMM-ESP", {
                     data: celsius1
                 },
 
-                {
+                */
+
                     name: 'Vandmåler temperatur',
                     type: 'line',
                     smooth: true,
